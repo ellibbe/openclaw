@@ -523,7 +523,7 @@ struct RootSidebar: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .foregroundStyle(isSelected ? OpenClawSidebarPalette.accent : OpenClawSidebarPalette.text)
+            .foregroundStyle(isSelected ? OpenClawSidebarPalette.selectionForeground : OpenClawSidebarPalette.text)
             .background(isSelected ? OpenClawSidebarPalette.selection : Color.clear, in: RoundedRectangle(
                 cornerRadius: OpenClawProMetric.controlRadius,
                 style: .continuous))
@@ -720,7 +720,7 @@ struct RootSidebar: View {
                             Image(systemName: isMain ? CommandCenterTab.mainSessionSymbol : "bubble.left")
                                 .font(OpenClawType.captionSemiBold)
                                 .foregroundStyle(isSelected
-                                    ? OpenClawSidebarPalette.accent
+                                    ? OpenClawSidebarPalette.selectionForeground
                                     : OpenClawSidebarPalette.muted)
                         }
                     }
@@ -730,7 +730,7 @@ struct RootSidebar: View {
                         Text(verbatim: CommandCenterTab.sessionTitle(session, mainSessionKey: rowPass.mainSessionKey))
                             .font(OpenClawType.subheadSemiBold)
                             .foregroundStyle(isSelected
-                                ? OpenClawSidebarPalette.accent
+                                ? OpenClawSidebarPalette.selectionForeground
                                 : OpenClawSidebarPalette.textStrong)
                             .lineLimit(1)
                         // Web-parity subtitle: the work line (repo/branch) names the
@@ -861,7 +861,7 @@ struct RootSidebar: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .foregroundStyle(isSelected ? OpenClawSidebarPalette.accent : OpenClawSidebarPalette.text)
+        .foregroundStyle(isSelected ? OpenClawSidebarPalette.selectionForeground : OpenClawSidebarPalette.text)
         .background(isSelected ? OpenClawSidebarPalette.selection : Color.clear, in: RoundedRectangle(
             cornerRadius: OpenClawProMetric.controlRadius,
             style: .continuous))
