@@ -510,10 +510,12 @@ struct RootSidebar: View {
                     if mainSession?.hasActiveRun == true {
                         ProgressView()
                             .controlSize(.mini)
-                            .tint(OpenClawSidebarPalette.accent)
+                            .tint(isSelected ? OpenClawSidebarPalette.selectionForeground : OpenClawSidebarPalette
+                                .accent)
                     } else if mainSession?.unread == true {
                         Circle()
-                            .fill(OpenClawSidebarPalette.accent)
+                            .fill(isSelected ? OpenClawSidebarPalette.selectionForeground : OpenClawSidebarPalette
+                                .accent)
                             .frame(width: 7, height: 7)
                             .accessibilityHidden(true)
                     }
@@ -715,7 +717,8 @@ struct RootSidebar: View {
                         if node.badges.runningCount > 0 {
                             ProgressView()
                                 .controlSize(.mini)
-                                .tint(OpenClawSidebarPalette.accent)
+                                .tint(isSelected ? OpenClawSidebarPalette.selectionForeground : OpenClawSidebarPalette
+                                    .accent)
                         } else {
                             Image(systemName: isMain ? CommandCenterTab.mainSessionSymbol : "bubble.left")
                                 .font(OpenClawType.captionSemiBold)
@@ -750,7 +753,9 @@ struct RootSidebar: View {
                     if session.pinned == true {
                         Image(systemName: "pin.fill")
                             .font(OpenClawType.caption2Medium)
-                            .foregroundStyle(OpenClawSidebarPalette.accent)
+                            .foregroundStyle(isSelected
+                                ? OpenClawSidebarPalette.selectionForeground
+                                : OpenClawSidebarPalette.accent)
                             .accessibilityHidden(true)
                     }
                     Text(verbatim: CommandCenterTab.sessionDetail(session))
@@ -759,7 +764,8 @@ struct RootSidebar: View {
                         .lineLimit(1)
                     if session.unread == true {
                         Circle()
-                            .fill(OpenClawSidebarPalette.accent)
+                            .fill(isSelected ? OpenClawSidebarPalette.selectionForeground : OpenClawSidebarPalette
+                                .accent)
                             .frame(width: 7, height: 7)
                             .accessibilityHidden(true)
                     }
@@ -849,10 +855,12 @@ struct RootSidebar: View {
                 if badgeCount > 0 {
                     Text(verbatim: badgeCount.formatted())
                         .font(OpenClawType.caption2Bold)
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(isSelected ? OpenClawSidebarPalette.background : Color.white)
                         .padding(.horizontal, 6)
                         .frame(minWidth: 18, minHeight: 18)
-                        .background(OpenClawSidebarPalette.accent, in: Capsule())
+                        .background(
+                            isSelected ? OpenClawSidebarPalette.selectionForeground : OpenClawSidebarPalette.accent,
+                            in: Capsule())
                         .accessibilityLabel(String(localized: "Attention"))
                 }
             }
